@@ -21,7 +21,7 @@ Legend: :white_check_mark: Done, :construction: Work in progress
 
 ## Installation
 
-Classig project:
+Classic project:
 ```bash
 cd Resources
 npm i titanized -S
@@ -40,7 +40,7 @@ npm i titanized -S
 
 ## Documentation
 
-:contruction: Work in progress ...
+:construction: Work in progress ...
 
 ## Contributing
 
