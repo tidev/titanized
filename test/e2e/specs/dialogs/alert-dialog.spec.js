@@ -1,5 +1,5 @@
 describe('AlertDialog', () => {
-	it('Show alert dialog with default options', (client) => {
+	it('Show alert dialog with default options', client => {
 		client.end();
 	});
 });

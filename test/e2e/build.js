@@ -9,7 +9,7 @@ function createArtifacts(testSettings) {
 	const requiredPlatforms = new Set();
 	Object.keys(testSettings).forEach(envName => {
 		const settings = testSettings[envName];
-		const platformName = setting.platformName.toLowerCase();
+		const platformName = settings.platformName.toLowerCase();
 		requiredPlatforms.add(platformName);
 	});
 

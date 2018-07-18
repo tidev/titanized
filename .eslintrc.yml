@@ -1,0 +1,5 @@
+extends:
+  - axway/env-node
+  - axway/+mocha
+rules:
+  mocha/handle-done-callback: off
