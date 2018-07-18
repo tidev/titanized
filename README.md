@@ -7,17 +7,17 @@
 Promise based async workflows and other usefull utilities wrapping the battle tested Titanium APIs for a modernized developing experience.
 
 * Use the popular [axios](https://github.com/axios/axios/) http client inside Titanium :white_check_mark:
-* Promise based APIs for async operations :contruction:
+* Promise based APIs for async operations :construction:
   * Dialogs (alert, confirm, prompt, login. options and custom dialogs)
   * Pickers (date and timer picker as well as custom pickers)
   * Camera access
   * Streams
-* Query device environemnt (current platform, permissions. etc) :contruction:
+* Query device environemnt (current platform, permissions. etc) :construction:
 * And more ...
 
-:white_check_mark: Done, :contruction: Work in progress
+Legend: :white_check_mark: Done, :construction: Work in progress
 
-> :bulb: Have a feature request, more ideas or 
+> :bulb: If you have ideas or a feature request for more workflows that should be covered by this library don't hesitate to file a [new issue](/issues/new) or better, open a [pull request](/compare).
 
 ## Installation
 
