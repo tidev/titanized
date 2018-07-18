@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "es5",
+        "module": "commonjs",
+        "lib": [
+            "es2015",
+            "es2015.iterable"
+        ],
+        "paths": {
+            "titanized/*": [
+                "src/*"
+            ]
+        },
+        "outDir": "./dist",
+        "declaration": true,
+        "downlevelIteration": true,
+        "strict": true,
+        "esModuleInterop": true
+    }
+}
