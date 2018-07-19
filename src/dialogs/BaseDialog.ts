@@ -5,26 +5,57 @@ export type DialogProperties = NonNullable<{ [K in keyof Titanium.UI.AlertDialog
 
 export class BaseDialog extends AbstractDialog {
 
-    public title: string | undefined;
+    protected _title: string;
 
-    public message: string | undefined;
+    protected _message: string;
 
-    public createOptions: any = {};
+    protected _createOptions: any = {};
 
     protected _dialog: Titanium.UI.AlertDialog | null = null;
 
-    protected _initialized = false;
-
-    constructor(title: string | undefined, message: string | undefined) {
+    constructor(title: string, message: string) {
         super();
 
-        this.title = title;
-        this.message = message;
+        this._title = title;
+        this.setProperty('title', title);
+        this._message = message;
+        this.setProperty('message', message);
+    }
+
+    get title() {
+        return this._title;
+    }
+
+    set title(title: string) {
+        this._title = title;
+        this.setProperty('title', this._title);
+    }
+
+    get message() {
+        return this._message;
+    }
+
+    set message(message: string) {
+        this._message = message;
+        this.setProperty('message', this._message);
     }
 
     private get dialog() {
         if (!this._dialog) {
-            this._dialog = Ti.UI.createAlertDialog(this.createOptions);
+            this._createOptions.title = this.title;
+            this._createOptions.message = this.message;
+            if (this._buttonNames.length > 0) {
+                this._createOptions.buttonNames = this._buttonNames;
+                this._actions.forEach((action, index) => {
+                    if (action.isCancelAction) {
+                        this._createOptions.cancel = index;
+                    }
+                    if (action.isDestructiveAction) {
+                        this._createOptions.destructive = index;
+                    }
+                });
+            }
+            this._dialog = Ti.UI.createAlertDialog(this._createOptions);
             this._dialog.addEventListener('click', e => this.handleButtonClick(e));
             this._initialized = true;
         }
@@ -36,7 +67,7 @@ export class BaseDialog extends AbstractDialog {
         if (this._initialized) {
             this.dialog.applyProperties({ [propertyName]: propertyValue});
         } else {
-            this.createOptions[propertyName] = propertyValue;
+            this._createOptions[propertyName] = propertyValue;
         }
     }
 
@@ -45,17 +76,6 @@ export class BaseDialog extends AbstractDialog {
     }
 
     public show(): void {
-        this._actions.forEach((action, index) => {
-            if (action.isCancelAction) {
-                this.dialog.cancel = index;
-            }
-            if (action.isDestructiveAction) {
-                this.dialog.destructive = index;
-            }
-        });
-        if (this._buttonNames.length > 0) {
-            this.dialog.setButtonNames(this._buttonNames);
-        }
         this.dialog.show();
     }
 
