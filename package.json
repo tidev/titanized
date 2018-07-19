@@ -17,6 +17,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/jasmine": "^2.8.8",
+    "@types/qs": "^6.5.1",
     "@types/titanium": "^7.1.0",
     "appium": "^1.8.1",
     "axios": "^0.18.0",
@@ -30,6 +31,7 @@
     "karma-titanium-launcher": "^0.2.1",
     "karma-typescript": "^3.0.12",
     "nightwatch": "^0.9.21",
+    "qs": "^6.5.2",
     "testarmada-nightwatch-extra": "^5.1.0",
     "tslint": "^5.10.0",
     "tslint-eslint-rules": "^5.3.1",

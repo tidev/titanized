@@ -14,10 +14,6 @@ export function titaniumAxiosAdapter(config: AxiosRequestConfig): AxiosPromise {
     const data = config.data;
     const headers = config.headers;
 
-    if (data) {
-        headers['Content-Length'] = data.length;
-    }
-
     if (config.auth) {
         const username = config.auth.username || '';
         const password = config.auth.password || '';
@@ -113,7 +109,7 @@ export function titaniumAxiosAdapter(config: AxiosRequestConfig): AxiosPromise {
             });
         }
 
-        client.send();
         client.open(config.method!.toUpperCase(), buildUrl(config.url as string, config.params, config.paramsSerializer));
+        client.send(data);
     });
 }
