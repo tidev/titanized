@@ -1,8 +1,7 @@
 import { AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-import settle from 'axios/lib/core/settle';
-import buildURL from 'axios/lib/helpers/buildURL';
-import utils from 'axios/lib/utils';
+import buildUrl from './build-url';
+import settle from './settle';
 
 export function titaniumAxiosAdapter(config: AxiosRequestConfig): AxiosPromise {
     const validResponseTypes = [ 'arraybuffer', 'blob', 'json', 'text' ];
@@ -70,15 +69,18 @@ export function titaniumAxiosAdapter(config: AxiosRequestConfig): AxiosPromise {
         };
     }
 
-    utils.forEach(headers, function setRequestHeader(val: any, key: string) {
-        if (typeof data === 'undefined' && key.toLowerCase() === 'content-type') {
-            delete headers[key];
-        } else {
-            client.setRequestHeader(key, val);
-        }
-    });
+    if (headers) {
+        Object.keys(headers).forEach(headerName => {
+            const headerValue = headers[headerName];
+            if (typeof data === 'undefined' && headerName.toLowerCase() === 'content-type') {
+                delete headers[headerName];
+            } else {
+                client.setRequestHeader(headerName, headerValue);
+            }
+        });
+    }
 
-    return new Promise((resolve, reject) => {
+    return new Promise<AxiosResponse>((resolve, reject) => {
         client.onload = () => {
             const response: Partial<AxiosResponse> = {
                 status: client.status,
@@ -97,7 +99,7 @@ export function titaniumAxiosAdapter(config: AxiosRequestConfig): AxiosPromise {
             } else {
                 response.data = client.responseText;
             }
-            settle(resolve, reject, response);
+            settle(resolve, reject, response as AxiosResponse);
         };
 
         client.onerror = (e: any) => {
@@ -111,7 +113,7 @@ export function titaniumAxiosAdapter(config: AxiosRequestConfig): AxiosPromise {
             });
         }
 
-        client.open(config.method!.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer));
         client.send();
+        client.open(config.method!.toUpperCase(), buildUrl(config.url as string, config.params, config.paramsSerializer));
     });
 }
