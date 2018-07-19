@@ -1,6 +1,6 @@
 export interface PresetDialogOptions {
-    title?: string;
-    message?: string;
+    title: string;
+    message: string;
 }
 
 export interface PresetDialogInterface {
