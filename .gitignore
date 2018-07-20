@@ -2,6 +2,7 @@
 logs
 *.log
 npm-debug.log*
+*.txt
 
 # Dependency directories
 node_modules/
@@ -12,3 +13,5 @@ dist/
 # Test data
 coverage/
 .coveralls.yml
+test/e2e/shots/
+test/e2e/reports
