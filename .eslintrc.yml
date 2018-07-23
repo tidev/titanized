@@ -1,6 +1,9 @@
 extends:
   - axway/env-node
   - axway/+mocha
-  - webdriverio/wdio
+plugins:
+  - webdriverio
+env: 
+  webdriverio/wdio: true
 rules:
   mocha/handle-done-callback: off
