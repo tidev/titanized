@@ -2,14 +2,14 @@ const spawn = require('child_process').spawn;
 const tempy = require('tempy');
 
 class TitaniumService {
-    onPrepare(config, capabilities) {
-        const tmpPath = tempy.directory();
+	onPrepare(config, capabilities) {
+		const tmpPath = tempy.directory();
 
-    }
+	}
 
-    executeCommand() {
+	executeCommand() {
 
-    }
+	}
 }
 
 module.exports = new TitaniumService();

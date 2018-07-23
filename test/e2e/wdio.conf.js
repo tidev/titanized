@@ -2,7 +2,7 @@ const titaniumService = require('./titanium-service');
 
 exports.config = {
 	port: 4723,
-	services: ['appium'],
+	services: [ 'appium' ],
 	appium: {
 		args: {
 			address: '127.0.0.1',
@@ -26,7 +26,7 @@ exports.config = {
 		app: '/Users/jvennemann/Development/appc/global-test-classic/build/android/bin/global-test-classic.apk',
 		appWaitActivity: '*.TiActivity',
 		automationName: 'UIAutomator2',
-		specs: ['test/e2e/specs/*/android/**/*.spec.js']
+		specs: [ 'test/e2e/specs/*/android/**/*.spec.js' ]
 	} ],
 	coloredLogs: true,
 	screenshotPath: 'test/e2e/shots',

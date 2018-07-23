@@ -29,7 +29,7 @@ describe('PromptDialog', () => {
 		page.showPrompt();
 		page.promptInput.setValue('Imperator Furiosa');
 		page.okButton.click();
-		
+
 		expect(page.result.getText()).toEqual('{"confirm":0,"value":"Imperator Furiosa"}');
 	});
 
