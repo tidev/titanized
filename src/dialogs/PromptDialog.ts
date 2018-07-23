@@ -38,26 +38,30 @@ export class PromptDialog extends AbstractPresetDialog<PromptResult> {
     }
 
     public show(): Promise<PromptResult> {
-        return new Promise(resolve => {
-            let value = '';
+        const getValue = () => {
             if (device.runsIn('android')) {
-                value = this._androidInput!.value;
+                return this._androidInput!.value;
             } else if (device.runsIn('ios')) {
-                value = this._dialog.getProperty('value');
+                return this._dialog.getProperty('value');
             }
+
+            return '';
+        };
+
+        return new Promise(resolve => {
             this._okAction!.handler = () => resolve({
                 confirm: ConfirmResult.Ok,
-                value
+                value: getValue()
             });
             if (this._neutralAction !== null) {
                 this._neutralAction.handler = () => resolve({
                     confirm: ConfirmResult.Neutral,
-                    value
+                    value: getValue()
                 });
             }
             this._cancelAction!.handler = () => resolve({
                 confirm: ConfirmResult.Cancel,
-                value
+                value: getValue()
             });
 
             this._dialog.show();
@@ -65,10 +69,13 @@ export class PromptDialog extends AbstractPresetDialog<PromptResult> {
     }
 
     private initializeAndroidPrompt(options: PromptDialogOptions) {
-        const inputType = options.inputType || PromptInputType.Text;
+        const inputType = typeof options.inputType !== 'undefined' ? options.inputType : PromptInputType.Text;
         const androidView = Ti.UI.createView();
         this._androidInput = Ti.UI.createTextField({
-            passwordMask: inputType !== PromptInputType.Text
+            left: 20,
+            right: 20,
+            passwordMask: inputType === PromptInputType.Password,
+            hintText: options.hintText
         });
         this._androidInput.hintText = options.hintText!;
         androidView.add(this._androidInput);
@@ -76,7 +83,7 @@ export class PromptDialog extends AbstractPresetDialog<PromptResult> {
     }
 
     private initializeIosPrompt(options: PromptDialogOptions) {
-        const inputType: PromptInputType = options.inputType || PromptInputType.Text;
+        const inputType = typeof options.inputType !== 'undefined' ? options.inputType : PromptInputType.Text;
         if (inputType === PromptInputType.Text) {
             this._dialog.setProperty('style', Ti.UI.iOS.AlertDialogStyle.PLAIN_TEXT_INPUT);
         } else {
