@@ -9,9 +9,6 @@ exports.config = {
 			commandTimeout: '7200'
 		}
 	},
-	specs: [
-		'test/e2e/specs/**'
-	],
 	framework: 'jasmine',
 	jasmineNodeOpts: {
 		defaultTimeoutInterval: 300000,
@@ -20,14 +17,16 @@ exports.config = {
 	reporterOptions: {
 		outputDir: 'test/e2e/reports'
 	},
+	maxInstances: 1,
 	capabilities: [ {
 		platformName: 'Android',
 		platformVersion: '8.0',
-		deviceName: 'Android Virtual Device (Nexus 5X)',
+		deviceName: 'AndroidTestDevice',
 		avd: 'Nexus_5X_API_26',
 		app: '/Users/jvennemann/Development/appc/global-test-classic/build/android/bin/global-test-classic.apk',
 		appWaitActivity: '*.TiActivity',
-		automationName: 'UIAutomator2'
+		automationName: 'UIAutomator2',
+		specs: ['test/e2e/specs/*/android/**/*.spec.js']
 	} ],
 	coloredLogs: true,
 	screenshotPath: 'test/e2e/shots',
