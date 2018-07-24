@@ -38,30 +38,30 @@ export class PromptDialog extends AbstractPresetDialog<PromptResult> {
     }
 
     public show(): Promise<PromptResult> {
-        const getValue = () => {
+        const getValue = (e: any) => {
             if (device.runsIn('android')) {
                 return this._androidInput!.value;
             } else if (device.runsIn('ios')) {
-                return this._dialog.getProperty('value');
+                return e.text;
             }
 
             return '';
         };
 
         return new Promise(resolve => {
-            this._okAction!.handler = () => resolve({
+            this._okAction!.handler = e => resolve({
                 confirm: ConfirmResult.Ok,
-                value: getValue()
+                value: getValue(e)
             });
             if (this._neutralAction !== null) {
-                this._neutralAction.handler = () => resolve({
+                this._neutralAction.handler = e => resolve({
                     confirm: ConfirmResult.Neutral,
-                    value: getValue()
+                    value: getValue(e)
                 });
             }
-            this._cancelAction!.handler = () => resolve({
+            this._cancelAction!.handler = e => resolve({
                 confirm: ConfirmResult.Cancel,
-                value: getValue()
+                value: getValue(e)
             });
 
             this._dialog.show();
