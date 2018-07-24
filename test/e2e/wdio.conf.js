@@ -23,13 +23,13 @@ exports.config = {
 		platformVersion: '8.0',
 		deviceName: 'AndroidTestDevice',
 		avd: 'Nexus_5X_API_26',
-		app: '/Users/jvennemann/Development/appc/global-test-classic/build/android/bin/global-test-classic.apk',
 		appWaitActivity: '*.TiActivity',
 		automationName: 'UIAutomator2',
-		specs: [ 'test/e2e/specs/*/android/**/*.spec.js' ]
+		specs: [ 'test/e2e/specs/*/android/**/*.spec.js' ],
+		fullReset: true
 	} ],
 	coloredLogs: true,
 	screenshotPath: 'test/e2e/shots',
 	logLevel: 'verbose',
-	onPrepare: titaniumService.onPrepare
+	onPrepare: titaniumService.onPrepare.bind(titaniumService)
 };

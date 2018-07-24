@@ -13,5 +13,8 @@ dist/
 # Test data
 coverage/
 .coveralls.yml
-test/e2e/shots/
 test/e2e/reports
+test/e2e/shots/
+
+# NPM related files
+*.tgz
