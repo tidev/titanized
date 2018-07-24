@@ -15,6 +15,14 @@
   ],
   "author": "Axway Appcelerator",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appcelerator/titanized.git"
+  },
+  "bugs": {
+    "url": "https://github.com/appcelerator/titanized/issues"
+  },
+  "homepage": "https://github.com/appcelerator/titanized#readme",
   "devDependencies": {
     "@types/jasmine": "^2.8.8",
     "@types/qs": "^6.5.1",
