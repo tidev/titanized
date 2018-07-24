@@ -1,4 +1,5 @@
 const fs = require('fs-extra');
+/* eslint-disable-next-line security/detect-child-process */
 const spawn = require('child_process').spawn;
 const path = require('path');
 const tempy = require('tempy');
@@ -110,6 +111,7 @@ class TitaniumService {
 			child.on('close', code => {
 				if (code) {
 					console.log(stdout);
+					console.log(stderr);
 					console.error(`${command} exited with non-zero code ${code}`);
 					reject(new Error(`Failed to execute command during project prepartion step. The command was: ${command} ${args.join(' ')}`));
 				}

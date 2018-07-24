@@ -42,7 +42,7 @@ button.addEventListener('click', () => {
 		message: 'This will delete your entire data!'
 	});
 	dialog.show().then(result => {
-		resultText.value = result
+		resultText.value = result;
 	});
 });
 win.add(button);
