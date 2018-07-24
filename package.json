@@ -30,7 +30,6 @@
     "@types/jasmine": "^2.8.8",
     "@types/qs": "^6.5.1",
     "@types/titanium": "^7.1.0",
-    "appium": "^1.8.1",
     "axios": "^0.18.0",
     "eslint": "^5.1.0",
     "eslint-config-axway": "^2.0.14",
