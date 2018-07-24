@@ -1,9 +1,8 @@
 extends:
   - axway/env-node
-  - axway/+mocha
 plugins:
+  - jasmine
   - webdriverio
 env: 
+  jasmine: true
   webdriverio/wdio: true
-rules:
-  mocha/handle-done-callback: off
