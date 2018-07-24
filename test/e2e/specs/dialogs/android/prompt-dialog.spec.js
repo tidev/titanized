@@ -1,20 +1,10 @@
-const page = Object.create({}, {
-	okButton: {
-		get: () => $('android=new UiSelector().text("OK").className("android.widget.Button")')
-	},
-	cancelButton: {
-		get: () => $('android=new UiSelector().text("CANCEL").className("android.widget.Button")')
-	},
-	promptInput: {
-		get: () => $('android=new UiSelector().resourceId("com.appc.global.classic:id/titanium_ui_edittext")')
-	},
-	showPrompt: {
-		value: () => {
-			$('~show_prompt_button.').click();
-		}
-	},
-	result: {
-		get: () => $('//TextInputLayout[@content-desc="result."]/android.widget.FrameLayout/android.widget.EditText')
+const page = require('./dialog.page');
+
+Object.defineProperty(page, 'promptInput', {
+	get: () => {
+		const input = $('android=new UiSelector().resourceId("com.titanized.test.e2e:id/titanium_ui_edittext")');
+		input.waitForExist(5000);
+		return input;
 	}
 });
 
@@ -26,7 +16,7 @@ describe('PromptDialog', () => {
 	it('should return input text', () => {
 		expect(page.result.getText()).toEqual('');
 
-		page.showPrompt();
+		page.showDialog('prompt');
 		page.promptInput.setValue('Imperator Furiosa');
 		page.okButton.click();
 
@@ -36,7 +26,7 @@ describe('PromptDialog', () => {
 	it('should return empty value on cancel', () => {
 		expect(page.result.getText()).toEqual('');
 
-		page.showPrompt();
+		page.showDialog('prompt');
 		page.cancelButton.click();
 
 		expect(page.result.getText()).toEqual('{"confirm":2,"value":""}');

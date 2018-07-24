@@ -1,13 +1,12 @@
+const page = require('./dialog.page');
+
 describe('AlertDialog', () => {
 	it('should show and accept alert dialog', () => {
-		const result = $('//TextInputLayout[@content-desc="result."]/android.widget.FrameLayout/android.widget.EditText');
+		expect(page.result.getText()).toEqual('');
 
-		expect(result.getText()).toEqual('');
+		page.showDialog('alert');
+		page.okButton.click();
 
-		browser
-			.click('~show_alert_button.')
-			.click('android.widget.Button');
-
-		expect(result.getText()).toEqual('alert_closed');
+		expect(page.result.getText()).toEqual('alert_closed');
 	});
 });
