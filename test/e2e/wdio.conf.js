@@ -18,16 +18,23 @@ exports.config = {
 		outputDir: 'test/e2e/reports'
 	},
 	maxInstances: 1,
-	capabilities: [ {
-		platformName: 'Android',
-		platformVersion: '8.0',
-		deviceName: 'AndroidTestDevice',
-		avd: 'Nexus_5X_API_26',
-		appWaitActivity: '*.TiActivity',
-		automationName: 'UIAutomator2',
-		specs: [ 'test/e2e/specs/*/android/**/*.spec.js' ],
-		fullReset: true
-	} ],
+	specs: [ 'test/e2e/specs/**/*.spec.js' ],
+	capabilities: [
+		{
+			platformName: 'Android',
+			platformVersion: '8.0',
+			deviceName: 'AndroidTestDevice',
+			avd: 'Nexus_5X_API_26',
+			appWaitActivity: '*.TiActivity',
+			automationName: 'UIAutomator2',
+			fullReset: true
+		},
+		{
+			platformName: 'iOS',
+			platformVersion: '11.4',
+			deviceName: 'iPhone 8'
+		}
+	],
 	coloredLogs: true,
 	screenshotPath: 'test/e2e/shots',
 	logLevel: 'verbose',
