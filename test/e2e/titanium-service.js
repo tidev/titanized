@@ -22,7 +22,7 @@ class TitaniumService {
 		}
 
 		return Promise.resolve()
-			.then(() => this.ensure)
+			.then(() => this.ensureSdkIsInstalled())
 			.then(() => this.createProject())
 			.then(() => this.runNpmPack())
 			.then(() => this.installNpmPackage())
