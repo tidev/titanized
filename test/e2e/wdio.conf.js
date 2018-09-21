@@ -27,7 +27,6 @@ exports.config = {
 			platformName: 'Android',
 			platformVersion: '8.0',
 			deviceName: 'AndroidTestDevice',
-			avd: 'Nexus_5X_API_26',
 			appWaitActivity: '*.TiActivity',
 			automationName: 'UIAutomator2',
 			fullReset: true
