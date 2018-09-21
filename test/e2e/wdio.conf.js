@@ -9,6 +9,9 @@ exports.config = {
 			commandTimeout: '7200'
 		}
 	},
+	titanium: {
+		sdkVersion: '7.4.0.GA'
+	},
 	framework: 'jasmine',
 	jasmineNodeOpts: {
 		defaultTimeoutInterval: 300000,
@@ -31,7 +34,7 @@ exports.config = {
 		},
 		{
 			platformName: 'iOS',
-			platformVersion: '11.4',
+			platformVersion: '12.0',
 			deviceName: 'iPhone 8'
 		}
 	],

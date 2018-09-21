@@ -22,6 +22,7 @@ class TitaniumService {
 		}
 
 		return Promise.resolve()
+			.then(() => this.ensure)
 			.then(() => this.createProject())
 			.then(() => this.runNpmPack())
 			.then(() => this.installNpmPackage())
@@ -32,6 +33,27 @@ class TitaniumService {
 				for (const caps of capabilities) {
 					const platformName = caps.platformName.toLowerCase();
 					caps.app = this.artifacts.get(platformName);
+				}
+			});
+	}
+
+	ensureSdkIsInstalled() {
+		if (!this.options.sdkVersion) {
+			return Promise.resolve();
+		}
+
+		return this.executeCommand('titanium', [ 'sdk', 'list', '-o', 'json' ])
+			.then(result => {
+				let sdkList;
+				try {
+					sdkList = JSON.parse(result);
+				} catch (e) {
+					return Promise.reject(new Error('Failed to parse SDK list.'));
+				}
+				if (sdkList.installed[this.options.sdkVersion]) {
+					return Promise.resolve();
+				} else {
+					return this.executeCommand('titanium', [ 'sdk', 'install', this.options.sdkVersion ]);
 				}
 			});
 	}
@@ -79,12 +101,16 @@ class TitaniumService {
 	}
 
 	buildProject(platformName) {
-		return this.executeCommand('titanium', [
+		const args = [
 			'build',
 			'-p', platformName,
 			'-d', this.projectPath,
 			'--build-only'
-		]).then(() => {
+		];
+		if (this.options.sdkVersion) {
+			args.push('-s', this.options.sdkVersion);
+		}
+		return this.executeCommand('titanium', args).then(() => {
 			const buildDirectoryPath = path.join(this.projectPath, 'build', platformName === 'ios' ? 'iphone' : platformName);
 			let artifactPath = '';
 			if (platformName === 'android') {
