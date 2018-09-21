@@ -48,7 +48,7 @@ class TitaniumService {
 				try {
 					sdkList = JSON.parse(result);
 				} catch (e) {
-					return Promise.reject(new Error('Failed to parse SDK list.'));
+					return Promise.reject(new Error(`Failed to parse SDK list from result: ${result}`));
 				}
 				if (sdkList.installed[this.options.sdkVersion]) {
 					return Promise.resolve();
