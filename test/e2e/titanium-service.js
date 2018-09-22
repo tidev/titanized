@@ -142,7 +142,7 @@ class TitaniumService {
 					reject(new Error(`Failed to execute command during project prepartion step. The command was: ${command} ${args.join(' ')}`));
 				}
 
-				resolve();
+				resolve(stdout);
 			});
 
 			child.stdout.on('data', data => {
