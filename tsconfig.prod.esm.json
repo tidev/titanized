@@ -4,8 +4,7 @@
       "module": "es2015",
       "moduleResolution": "node",
       "rootDir": "./src",
-      "outDir": "./dist/esm",
-      "importHelpers": true
+      "outDir": "./dist/esm"
   },
   "include": [
       "src/**/*.ts"

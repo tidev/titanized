@@ -2,8 +2,7 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "rootDir": "./src",
-        "outDir": "./dist/cjs",
-        "importHelpers": true
+        "outDir": "./dist/cjs"
     },
     "include": [
         "src/**/*.ts"
