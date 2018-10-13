@@ -1,6 +1,6 @@
 {
   "name": "titanized",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Modernized APIs and utilities for Axway Titanium",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
