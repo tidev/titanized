@@ -7,7 +7,7 @@ export class DeviceEnvironment {
         return Ti.Platform.osname;
     }
 
-    public runsIn(platform: string): boolean {
+    public runs(platform: string): boolean {
         return platform === this.platform;
     }
 }

@@ -30,18 +30,18 @@ export class PromptDialog extends AbstractPresetDialog<PromptResult> {
         }
         this.initalizeCancelAction(options.cancelButtonText ? options.cancelButtonText : 'Cancel');
 
-        if (device.runsIn('android')) {
+        if (device.runs('android')) {
             this.initializeAndroidPrompt(options);
-        } else if (device.runsIn('ios')) {
+        } else if (device.runs('ios')) {
             this.initializeIosPrompt(options);
         }
     }
 
     public show(): Promise<PromptResult> {
         const getValue = (e: any) => {
-            if (device.runsIn('android')) {
+            if (device.runs('android')) {
                 return this._androidInput!.value;
-            } else if (device.runsIn('ios')) {
+            } else if (device.runs('ios')) {
                 return e.text;
             }
 
