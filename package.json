@@ -13,7 +13,8 @@
     "lint": "tslint -p tsconfig.json && eslint test",
     "test": "npm run lint && npm run test:unit",
     "test:e2e": "wdio test/e2e/wdio.conf.js",
-    "test:unit": "karma start test/unit/karma.unit.config.js"
+    "test:unit": "karma start test/unit/karma.unit.config.js",
+    "prepack": "npm run build"
   },
   "keywords": [
     "titanium",
