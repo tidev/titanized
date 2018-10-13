@@ -1,7 +1,4 @@
-import { AbstractDialog } from './AbstractDialog';
-
-// tslint:disable-next-line: ban-types
-export type DialogProperties = NonNullable<{ [K in keyof Titanium.UI.AlertDialog]: Titanium.UI.AlertDialog[K] extends Function ? never : K }[keyof Titanium.UI.AlertDialog]>;
+import { AbstractDialog, DialogProperties, DialogPropertyNames } from './AbstractDialog';
 
 export class BaseDialog extends AbstractDialog {
 
@@ -9,7 +6,7 @@ export class BaseDialog extends AbstractDialog {
 
     protected _message: string;
 
-    protected _createOptions: any = {};
+    protected _createOptions: DialogProperties = {};
 
     protected _dialog: Titanium.UI.AlertDialog | null = null;
 
@@ -42,6 +39,12 @@ export class BaseDialog extends AbstractDialog {
 
     private get dialog() {
         if (!this._dialog) {
+            for (const optionName of Object.keys(BaseDialog.defaults)) {
+                const propertyName: DialogPropertyNames = (optionName as any);
+                if (!this._createOptions[propertyName]) {
+                    this._createOptions[propertyName] = (BaseDialog.defaults as any)[optionName];
+                }
+            }
             this._createOptions.title = this.title;
             this._createOptions.message = this.message;
             if (this._buttonNames.length > 0) {
@@ -63,7 +66,7 @@ export class BaseDialog extends AbstractDialog {
         return this._dialog;
     }
 
-    public setProperty(propertyName: DialogProperties, propertyValue: any) {
+    public setProperty(propertyName: DialogPropertyNames, propertyValue: any) {
         if (this._initialized) {
             this.dialog.applyProperties({ [propertyName]: propertyValue});
         } else {
@@ -71,7 +74,7 @@ export class BaseDialog extends AbstractDialog {
         }
     }
 
-    public getProperty<T extends DialogProperties>(propertyName: T): Titanium.UI.AlertDialog[T] {
+    public getProperty<T extends DialogPropertyNames>(propertyName: T): Titanium.UI.AlertDialog[T] {
         return this.dialog[propertyName];
     }
 

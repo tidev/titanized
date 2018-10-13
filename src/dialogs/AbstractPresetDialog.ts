@@ -1,3 +1,4 @@
+import { DialogPropertyNames } from './AbstractDialog';
 import { BaseDialog } from './BaseDialog';
 import { DialogAction } from './DialogAction';
 import { PresetDialogInterface, PresetDialogOptions } from './PresetDialogInterface';
@@ -13,6 +14,14 @@ export abstract class AbstractPresetDialog<T> implements PresetDialogInterface {
 
     constructor(options: PresetDialogOptions) {
         this._dialog = new BaseDialog(options.title, options.message);
+    }
+
+    public setProperty(propertyName: DialogPropertyNames, propertyValue: any) {
+        this._dialog.setProperty(propertyName, propertyValue);
+    }
+
+    public getProperty<U extends DialogPropertyNames>(propertyName: U): Titanium.UI.AlertDialog[U] {
+        return this._dialog.getProperty(propertyName);
     }
 
     public abstract show(): Promise<T>;
