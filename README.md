@@ -1,5 +1,7 @@
 # titanized
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/appcelerator/titanized.svg)](https://greenkeeper.io/)
+
 > Modernized APIs and utilities for Axway Titanium :rocket:
 
 ## Features
