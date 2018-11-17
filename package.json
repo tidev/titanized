@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/appcelerator/titanized#readme",
   "devDependencies": {
-    "@types/jasmine": "^2.8.8",
+    "@types/jasmine": "^3.0.0",
     "@types/qs": "^6.5.1",
     "@types/titanium": "^7.3.0",
     "appium": "^1.9.1",
