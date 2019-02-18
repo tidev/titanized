@@ -5,7 +5,7 @@ exports.config = {
 	port: 4723,
 	sync: true,
 	// appium auto start service doesn't work anymore with webdriver 5
-	//services: [ 'appium' ],
+	// services: [ 'appium' ],
 	appium: {
 		args: {
 			address: '127.0.0.1',
@@ -22,7 +22,7 @@ exports.config = {
 	reporters: [
 		[ 'allure', {
 			outputDir: 'test/e2e/reports/allure-results'
-		}],
+		} ],
 		'spec'
 	],
 	maxInstances: 1,
