@@ -11,6 +11,7 @@
     "build:esm": "tsc -p tsconfig.prod.esm.json",
     "clean": "rimraf dist",
     "lint": "tslint -p tsconfig.json && eslint test",
+    "report:allure": "allure generate test/e2e/reports/allure-results && allure open",
     "test": "npm run lint && npm run test:unit",
     "test:e2e": "wdio test/e2e/wdio.conf.js",
     "test:unit": "karma start test/unit/karma.unit.config.js",
@@ -40,7 +41,13 @@
     "@types/jasmine": "^3.3.9",
     "@types/qs": "^6.5.1",
     "@types/titanium": "^7.3.0",
-    "appium": "^1.9.1",
+    "@wdio/allure-reporter": "^5.6.0",
+    "@wdio/cli": "^5.6.0",
+    "@wdio/jasmine-framework": "^5.6.0",
+    "@wdio/local-runner": "^5.6.0",
+    "@wdio/spec-reporter": "^5.6.0",
+    "@wdio/sync": "^5.6.0",
+    "appium": "^1.11.1",
     "axios": "^0.18.0",
     "eslint": "^5.14.0",
     "eslint-config-axway": "^4.2.2",
@@ -61,8 +68,6 @@
     "tslint-jasmine-rules": "^1.5.1",
     "typescript": "^3.3.3",
     "wdio-appium-service": "^0.2.3",
-    "wdio-jasmine-framework": "^0.3.5",
-    "wdio-spec-reporter": "^0.1.5",
-    "webdriverio": "^4.13.1"
+    "webdriverio": "^5.6.0"
   }
 }
