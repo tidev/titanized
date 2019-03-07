@@ -19,7 +19,7 @@ Promise based async workflows and other usefull utilities wrapping the battle te
 
 Legend: :white_check_mark: Done, :construction: Work in progress
 
-> :bulb: If you have ideas or a feature request for more workflows that should be covered by this library don't hesitate to file a [new issue](/issues/new) or better, open a [pull request](/compare).
+> :bulb: If you have ideas or a feature request for more workflows that should be covered by this library don't hesitate to file a [new issue](https://github.com/appcelerator/titanized/issues/new) or better, open a [pull request](/compare).
 
 ## Installation
 
