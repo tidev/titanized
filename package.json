@@ -61,7 +61,7 @@
     "karma-titanium-launcher": "^0.5.2",
     "karma-typescript": "^4.0.0",
     "qs": "^6.6.0",
-    "rimraf": "^2.6.2",
+    "rimraf": "^3.0.0",
     "tempy": "^0.3.0",
     "tslint": "^5.12.0",
     "tslint-eslint-rules": "^5.4.0",
