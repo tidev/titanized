@@ -40,7 +40,7 @@
   "devDependencies": {
     "@types/jasmine": "^3.3.9",
     "@types/qs": "^6.5.1",
-    "@types/titanium": "^8.0.0",
+    "@types/titanium": "^9.0.0",
     "@wdio/allure-reporter": "^5.6.0",
     "@wdio/cli": "^5.6.0",
     "@wdio/jasmine-framework": "^5.6.0",
