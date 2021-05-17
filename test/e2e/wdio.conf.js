@@ -13,7 +13,7 @@ exports.config = {
 		}
 	},
 	titanium: {
-		sdkVersion: '7.4.2.GA'
+		sdkVersion: '9.3.2.GA'
 	},
 	framework: 'jasmine',
 	jasmineNodeOpts: {
