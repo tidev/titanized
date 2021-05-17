@@ -16,18 +16,25 @@ module.exports = config => {
 		karmaTypescriptConfig: {
 			tsconfig: './tsconfig.test.json'
 		},
+		titanium: {
+			sdkVersion: '9.3.2.GA'
+		},
 		customLaunchers: {
 			android: {
 				base: 'Titanium',
-				browserName: 'Android Emulator',
-				displayName: 'android',
+				displayName: 'Android Emulator',
 				platform: 'android',
-				sdkVersion: '7.4.0.GA'
+			},
+			ios: {
+				base: 'Titanium',
+				displayName: 'iOS Simulator',
+				platform: 'ios'
 			}
 		},
-		browsers: [ 'android' ],
+		browsers: [ 'android', 'ios' ],
 		singleRun: true,
 		retryLimit: 0,
-		captureTimeout: 300000
+		captureTimeout: 300000,
+		concurrency: 1
 	});
 };
